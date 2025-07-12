@@ -6,6 +6,7 @@ import auth from "./auth";
 import department from "./department";
 import employee from "./employee";
 import user from "./user";
+import inventoryType from "./inventory-type";
 
 const router = Router();
 
@@ -41,6 +42,11 @@ router.use(
   "/employees",
   authMiddleware,
   employee
+);
+router.use(
+  "/inventory-types",
+  authMiddleware,
+  inventoryType
 );
 
 export default router;
