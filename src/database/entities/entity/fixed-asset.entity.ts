@@ -4,6 +4,7 @@ import { StatusEnum, StatusType } from "./../../../constants";
 import { AssetTypeEntity } from "./asset-type.entity";
 import { DepartmentEntity } from "./department.entity";
 import { DepreciationCalculationEntity } from "./depreciation-calculation.entity";
+import { EmployeeEntity } from "./employee.entity";
 
 @Entity({ name: "fixed_assets" })
 export class FixedAssetEntity extends BaseEntity {
@@ -22,6 +23,9 @@ export class FixedAssetEntity extends BaseEntity {
   @Column()
   asset_type_id: number;
 
+  @Column()
+  employee_id: number;
+
   @Column({ type: "enum", enum: StatusEnum, default: StatusEnum.ACTIVE })
   status: StatusType;
 
@@ -32,6 +36,10 @@ export class FixedAssetEntity extends BaseEntity {
   @ManyToOne(() => DepartmentEntity, (department) => department.fixedAssets)
   @JoinColumn({ name: "department_id", referencedColumnName: "id" })
   department: DepartmentEntity;
+
+  @ManyToOne(() => EmployeeEntity, (employee) => employee.fixedAssets)
+  @JoinColumn({ name: "employee_id", referencedColumnName: "id" })
+  employee: EmployeeEntity;
 
   @OneToMany(
     () => DepreciationCalculationEntity,

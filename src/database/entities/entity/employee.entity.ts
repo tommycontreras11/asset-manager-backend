@@ -1,7 +1,8 @@
-import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
 import { PersonBaseEntity } from "../base/person.base.entity";
 import { StatusEnum, StatusType } from "./../../../constants";
 import { DepartmentEntity } from "./department.entity";
+import { FixedAssetEntity } from "./fixed-asset.entity";
 
 export enum PersonTypeEnum {
   INDIVIDUAL = "INDIVIDUAL",
@@ -24,4 +25,7 @@ export class EmployeeEntity extends PersonBaseEntity {
   @ManyToOne(() => DepartmentEntity, (department) => department.employees)
   @JoinColumn({ name: "department_id", referencedColumnName: "id" })
   department: DepartmentEntity;
+
+  @OneToMany(() => FixedAssetEntity, (fixedAsset) => fixedAsset.employee)
+  fixedAssets: FixedAssetEntity[];
 }
