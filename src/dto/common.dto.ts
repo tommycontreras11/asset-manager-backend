@@ -26,5 +26,3 @@ export class PersonDTO {
   @IsString()
   password: string;
 }
-
-export type PartialPersonDTO = Partial<PersonDTO>;

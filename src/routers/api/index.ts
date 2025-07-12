@@ -4,6 +4,7 @@ import { unless } from "./../../utils/unless.util";
 
 import auth from "./auth";
 import department from "./department";
+import user from "./user";
 
 const router = Router();
 
@@ -29,6 +30,11 @@ router.use(
     authMiddleware
   ),
   department
+);
+router.use(
+  "/users",
+  authMiddleware,
+  user
 );
 
 export default router;
