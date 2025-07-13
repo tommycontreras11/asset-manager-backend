@@ -22,6 +22,8 @@ export const getOneFixedAssetController = async (
       const fixedAsset = {
         uuid: data.uuid,
         name: data.name,
+        purchase_value: data.purchase_value,
+        accumulated_depreciation: data.accumulated_depreciation,
         assetType: {
           uuid: data.assetType.uuid,
           name: data.assetType.name,

@@ -14,6 +14,8 @@ export const getAllFixedAssetController = async (_req: Request, res: Response) =
       const fixedAssets = data.map((fixedAsset) => ({
         uuid: fixedAsset.uuid,
         name: fixedAsset.name,
+        purchase_value: fixedAsset.purchase_value,
+        accumulated_depreciation: fixedAsset.accumulated_depreciation,
         assetType: {
           uuid: fixedAsset.assetType.uuid,
           name: fixedAsset.assetType.name,
