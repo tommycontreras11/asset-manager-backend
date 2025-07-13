@@ -28,6 +28,9 @@ export class JournalEntryEntity extends BaseEntity {
   @Column({ type: "float", precision: 10, scale: 2 })
   amount: number;
 
+  @Column({ type: "enum", enum: MovementTypeEnum })
+  movement_type: MovementType;
+
   @Column({ type: "enum", enum: StatusEnum, default: StatusEnum.ACTIVE })
   status: StatusType;
 
