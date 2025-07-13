@@ -3,7 +3,7 @@ import { statusCode } from "../../utils/status.util";
 
 export async function deleteLedgerAccountService(uuid: string) {
   const foundLedgerAccount = await LedgerAccountEntity.findOneBy({ uuid }).catch((e) => {
-    console.error("updateLedgerAccountService -> LedgerAccountEntity.findOneBy: ", e);
+    console.error("deleteLedgerAccountService -> LedgerAccountEntity.findOneBy: ", e);
     return null;
   });
 
@@ -15,7 +15,7 @@ export async function deleteLedgerAccountService(uuid: string) {
   }
 
   await foundLedgerAccount.softRemove().catch((e) => {
-    console.error("updateLedgerAccountService -> LedgerAccountEntity.update: ", e);
+    console.error("deleteLedgerAccountService -> LedgerAccountEntity.update: ", e);
     return null;
   });
 

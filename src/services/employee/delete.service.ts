@@ -3,7 +3,7 @@ import { statusCode } from "../../utils/status.util";
 
 export async function deleteEmployeeService(uuid: string) {
   const foundEmployee = await EmployeeEntity.findOneBy({ uuid }).catch((e) => {
-    console.error("updateEmployeeService -> EmployeeEntity.findOneBy: ", e);
+    console.error("deleteEmployeeService -> EmployeeEntity.findOneBy: ", e);
     return null;
   });
 
@@ -15,7 +15,7 @@ export async function deleteEmployeeService(uuid: string) {
   }
 
   await foundEmployee.softRemove().catch((e) => {
-    console.error("updateEmployeeService -> EmployeeEntity.update: ", e);
+    console.error("deleteEmployeeService -> EmployeeEntity.update: ", e);
     return null;
   });
 

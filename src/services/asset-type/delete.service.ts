@@ -3,7 +3,7 @@ import { statusCode } from "../../utils/status.util";
 
 export async function deleteAssetTypeService(uuid: string) {
   const foundAssetType = await AssetTypeEntity.findOneBy({ uuid }).catch((e) => {
-    console.error("updateAssetTypeService -> AssetTypeEntity.findOneBy: ", e);
+    console.error("deleteAssetTypeService -> AssetTypeEntity.findOneBy: ", e);
     return null;
   });
 
@@ -15,7 +15,7 @@ export async function deleteAssetTypeService(uuid: string) {
   }
 
   await foundAssetType.softRemove().catch((e) => {
-    console.error("updateAssetTypeService -> AssetTypeEntity.update: ", e);
+    console.error("deleteAssetTypeService -> AssetTypeEntity.update: ", e);
     return null;
   });
 

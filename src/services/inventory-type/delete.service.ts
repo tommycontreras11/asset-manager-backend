@@ -3,7 +3,7 @@ import { statusCode } from "../../utils/status.util";
 
 export async function deleteInventoryTypeService(uuid: string) {
   const foundInventoryType = await InventoryTypeEntity.findOneBy({ uuid }).catch((e) => {
-    console.error("updateInventoryTypeService -> InventoryTypeEntity.findOneBy: ", e);
+    console.error("deleteInventoryTypeService -> InventoryTypeEntity.findOneBy: ", e);
     return null;
   });
 
@@ -15,7 +15,7 @@ export async function deleteInventoryTypeService(uuid: string) {
   }
 
   await foundInventoryType.softRemove().catch((e) => {
-    console.error("updateInventoryTypeService -> InventoryTypeEntity.update: ", e);
+    console.error("deleteInventoryTypeService -> InventoryTypeEntity.update: ", e);
     return null;
   });
 

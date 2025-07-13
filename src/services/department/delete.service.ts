@@ -3,7 +3,7 @@ import { statusCode } from "../../utils/status.util";
 
 export async function deleteDepartmentService(uuid: string) {
   const foundDepartment = await DepartmentEntity.findOneBy({ uuid }).catch((e) => {
-    console.error("updateDepartmentService -> DepartmentEntity.findOneBy: ", e);
+    console.error("deleteDepartmentService -> DepartmentEntity.findOneBy: ", e);
     return null;
   });
 
@@ -15,7 +15,7 @@ export async function deleteDepartmentService(uuid: string) {
   }
 
   await foundDepartment.softRemove().catch((e) => {
-    console.error("updateDepartmentService -> DepartmentEntity.update: ", e);
+    console.error("deleteDepartmentService -> DepartmentEntity.update: ", e);
     return null;
   });
 

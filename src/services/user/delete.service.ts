@@ -3,7 +3,7 @@ import { statusCode } from "../../utils/status.util";
 
 export async function deleteUserService(uuid: string) {
   const foundUser = await UserEntity.findOneBy({ uuid }).catch((e) => {
-    console.error("updateUserService -> UserEntity.findOneBy: ", e);
+    console.error("deleteUserService -> UserEntity.findOneBy: ", e);
     return null;
   });
 
@@ -15,7 +15,7 @@ export async function deleteUserService(uuid: string) {
   }
 
   await foundUser.softRemove().catch((e) => {
-    console.error("updateUserService -> UserEntity.update: ", e);
+    console.error("deleteUserService -> UserEntity.update: ", e);
     return null;
   });
 
