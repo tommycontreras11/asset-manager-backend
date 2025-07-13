@@ -6,8 +6,8 @@ export class CreateDepartmentDTO {
   @IsString()
   name: string;
 
-  @IsNotEmpty()
   @IsOptional()
+  @IsString()
   description: string;
 }
 
@@ -16,8 +16,8 @@ export class UpdateDepartmentDTO {
   @IsString()
   name: string;
 
-  @IsNotEmpty()
   @IsOptional()
+  @IsString()
   description: string;
 
   @IsOptional()
