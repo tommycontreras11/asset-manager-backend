@@ -21,6 +21,7 @@ export const getAllJournalEntryController = async (_req: Request, res: Response)
           uuid: journalEntry.ledgerAccount.uuid,
           name: journalEntry.ledgerAccount.name,
         },
+        movement_type: journalEntry.movement_type,
         entry_date: journalEntry.entry_date,
         amount: journalEntry.amount,
         status: journalEntry.status,

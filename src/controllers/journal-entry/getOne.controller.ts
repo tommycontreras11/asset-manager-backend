@@ -2,7 +2,10 @@ import { Request, Response } from "express";
 import { getOneJournalEntryService } from "../../services/journal-entry/getOne.service";
 import { statusCode } from "../../utils/status.util";
 
-export const getOneJournalEntryController = async (req: Request, res: Response) => {
+export const getOneJournalEntryController = async (
+  req: Request,
+  res: Response
+) => {
   const { uuid } = req.params;
 
   getOneJournalEntryService({
@@ -12,7 +15,7 @@ export const getOneJournalEntryController = async (req: Request, res: Response) 
     relations: {
       inventoryType: true,
       ledgerAccount: true,
-    }
+    },
   })
     .then((data) => {
       const inventoryType = {
@@ -26,6 +29,7 @@ export const getOneJournalEntryController = async (req: Request, res: Response) 
           uuid: data.ledgerAccount.uuid,
           name: data.ledgerAccount.name,
         },
+        movement_type: data.movement_type,
         entry_date: data.entry_date,
         amount: data.amount,
         status: data.status,
