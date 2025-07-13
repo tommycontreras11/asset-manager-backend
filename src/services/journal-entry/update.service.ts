@@ -15,6 +15,7 @@ export async function updateJournalEntryService(
     amount,
     inventoryTypeUUID,
     ledgerAccountUUID,
+    movementType,
     status,
   }: UpdateJournalEntryDTO
 ) {
@@ -72,6 +73,7 @@ export async function updateJournalEntryService(
       ...(amount && { amount: parseFloat(amount) }),
       ...(foundInventoryType && { inventoryType: foundInventoryType }),
       ...(foundLedgerAccount && { ledgerAccount: foundLedgerAccount }),
+      ...(movementType && { movement_type: movementType }),
       ...(status && { status }),
     }
   ).catch((e) => {

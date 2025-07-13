@@ -13,6 +13,7 @@ export async function createJournalEntryService({
   amount,
   inventoryTypeUUID,
   ledgerAccountUUID,
+  movementType
 }: CreateJournalEntryDTO) {
   const foundInventoryType = await InventoryTypeEntity.findOneBy({
     uuid: inventoryTypeUUID,
@@ -60,6 +61,7 @@ export async function createJournalEntryService({
     inventoryType: foundInventoryType,
     ledgerAccount: foundLedgerAccount,
     amount: parseFloat(amount),
+    movement_type: movementType
   })
     .save()
     .catch((e) => {
