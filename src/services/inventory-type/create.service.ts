@@ -10,7 +10,7 @@ export async function createInventoryTypeService({ name, description }: CreateIn
 
   if (foundInventoryType) {
     return Promise.reject({
-      message: "InventoryType already exists",
+      message: "Inventory type already exists",
       status: statusCode.BAD_REQUEST,
     });
   }
@@ -25,5 +25,5 @@ export async function createInventoryTypeService({ name, description }: CreateIn
       return null;
     });
 
-  return "InventoryType created successfully";
+  return "Inventory type created successfully";
 }

@@ -14,7 +14,7 @@ export async function updateInventoryTypeService(
 
   if (!foundInventoryType) {
     return Promise.reject({
-      message: "InventoryType not found",
+      message: "Inventory type not found",
       status: statusCode.NOT_FOUND,
     });
   }
@@ -29,7 +29,7 @@ export async function updateInventoryTypeService(
 
     if (existingInventoryType) {
       return Promise.reject({
-        message: "InventoryType already exists",
+        message: "Inventory type already exists",
         status: statusCode.BAD_REQUEST,
       });
     }
@@ -47,5 +47,5 @@ export async function updateInventoryTypeService(
     return null;
   });
 
-  return "InventoryType updated successfully";
+  return "Inventory type updated successfully";
 }

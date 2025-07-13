@@ -9,7 +9,7 @@ export async function deleteInventoryTypeService(uuid: string) {
 
   if (!foundInventoryType) {
     return Promise.reject({
-      message: "InventoryType not found",
+      message: "Inventory type not found",
       status: statusCode.NOT_FOUND,
     });
   }
@@ -19,5 +19,5 @@ export async function deleteInventoryTypeService(uuid: string) {
     return null;
   });
 
-  return "InventoryType deleted successfully";
+  return "Inventory type deleted successfully";
 }

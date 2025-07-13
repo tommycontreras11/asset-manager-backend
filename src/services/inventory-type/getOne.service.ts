@@ -12,7 +12,7 @@ export async function getOneInventoryTypeService(
 
   if (!foundInventoryType) {
     return Promise.reject({
-      message: "InventoryType not found",
+      message: "Inventory type not found",
       status: statusCode.NOT_FOUND,
     });
   }
