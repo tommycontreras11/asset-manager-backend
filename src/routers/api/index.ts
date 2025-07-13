@@ -9,6 +9,7 @@ import user from "./user";
 import inventoryType from "./inventory-type";
 import ledgerAccount from "./ledger-account";
 import assetType from "./asset-type";
+import journalEntry from "./journal-entry";
 
 const router = Router();
 
@@ -59,6 +60,11 @@ router.use(
   "/asset-types",
   authMiddleware,
   assetType
+);
+router.use(
+  "/journal-entries",
+  authMiddleware,
+  journalEntry
 );
 
 export default router;
