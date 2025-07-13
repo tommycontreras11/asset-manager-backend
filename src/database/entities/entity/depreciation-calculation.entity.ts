@@ -15,12 +15,6 @@ export class DepreciationCalculationEntity extends BaseEntity {
   accumulated_depreciation: number;
 
   @Column()
-  purchase_account: string;
-
-  @Column()
-  depreciation_account: string;
-
-  @Column()
   fixed_asset_id: number;
 
   @Column({ type: "enum", enum: StatusEnum, default: StatusEnum.ACTIVE })

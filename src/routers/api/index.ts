@@ -11,6 +11,7 @@ import ledgerAccount from "./ledger-account";
 import assetType from "./asset-type";
 import journalEntry from "./journal-entry";
 import fixedAsset from "./fixed-asset";
+import depreciationCalculation from "./depreciation-calculation";
 
 const router = Router();
 
@@ -71,6 +72,11 @@ router.use(
   "/fixed-assets",
   authMiddleware,
   fixedAsset
+);
+router.use(
+  "/depreciation-calculations",
+  authMiddleware,
+  depreciationCalculation
 );
 
 export default router;
