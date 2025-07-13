@@ -10,6 +10,7 @@ import inventoryType from "./inventory-type";
 import ledgerAccount from "./ledger-account";
 import assetType from "./asset-type";
 import journalEntry from "./journal-entry";
+import fixedAsset from "./fixed-asset";
 
 const router = Router();
 
@@ -65,6 +66,11 @@ router.use(
   "/journal-entries",
   authMiddleware,
   journalEntry
+);
+router.use(
+  "/fixed-assets",
+  authMiddleware,
+  fixedAsset
 );
 
 export default router;
