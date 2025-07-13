@@ -13,6 +13,7 @@ export const getOneLedgerAccountController = async (req: Request, res: Response)
     .then((data) => {
       const inventoryType = {
         uuid: data.uuid,
+        code: data.code,
         name: data.name,
         type: data.type,
         status: data.status,

@@ -7,6 +7,7 @@ export const getAllLedgerAccountController = async (_req: Request, res: Response
     .then((data) => {
       const inventoryTypes = data.map((inventoryType) => ({
         uuid: inventoryType.uuid,
+        code: inventoryType.code,
         name: inventoryType.name,
         type: inventoryType.type,
         status: inventoryType.status,
