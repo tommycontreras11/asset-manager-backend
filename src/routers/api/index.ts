@@ -8,6 +8,7 @@ import employee from "./employee";
 import user from "./user";
 import inventoryType from "./inventory-type";
 import ledgerAccount from "./ledger-account";
+import assetType from "./asset-type";
 
 const router = Router();
 
@@ -53,6 +54,11 @@ router.use(
   "/ledger-accounts",
   authMiddleware,
   ledgerAccount
+);
+router.use(
+  "/asset-types",
+  authMiddleware,
+  assetType
 );
 
 export default router;
