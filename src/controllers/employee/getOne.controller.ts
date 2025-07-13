@@ -9,6 +9,9 @@ export const getOneEmployeeController = async (req: Request, res: Response) => {
     where: {
       uuid,
     },
+    relations: {
+      department: true,
+    },
   })
     .then((data) => {
       const employee = {
@@ -18,6 +21,10 @@ export const getOneEmployeeController = async (req: Request, res: Response) => {
         name: data.name,
         password: data.password,
         personType: data.person_type,
+        department: {
+          uuid: data.department.uuid,
+          name: data.department.name,
+        },
         status: data.status,
       };
 

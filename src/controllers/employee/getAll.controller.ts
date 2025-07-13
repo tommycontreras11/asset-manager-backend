@@ -3,7 +3,11 @@ import { getAllEmployeeService } from "../../services/employee/getAll.service";
 import { statusCode } from "../../utils/status.util";
 
 export const getAllEmployeeController = async (_req: Request, res: Response) => {
-  getAllEmployeeService({})
+  getAllEmployeeService({
+    relations: {
+      department: true,
+    }
+  })
     .then((data) => {
       const employees = data.map((employee) => ({
         uuid: employee.uuid,
@@ -12,6 +16,10 @@ export const getAllEmployeeController = async (_req: Request, res: Response) => 
         name: employee.name,
         password: employee.password,
         personType: employee.person_type,
+        department: {
+          uuid: employee.department.uuid,
+          name: employee.department.name
+        },
         status: employee.status,
       }));
 
