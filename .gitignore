@@ -9,4 +9,3 @@ jspm_packages/
 
 # dotenv environment variable files
 .env
-.env.*
