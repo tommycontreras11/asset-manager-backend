@@ -13,7 +13,13 @@ export type MovementType = keyof typeof MovementTypeEnum;
 
 @Entity({ name: "journal_entries" })
 export class JournalEntryEntity extends BaseEntity {
-  @Column({ nullable: true })
+  @Column({ default: 8 })
+  auxiliary_id: number;
+
+  @Column({ default: null })
+  journal_id: number;
+
+  @Column()
   description: string;
 
   @Column()

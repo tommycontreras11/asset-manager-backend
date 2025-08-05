@@ -10,7 +10,6 @@ import { InventoryTypeEntity } from "./../../database/entities/entity/inventory-
 export async function updateJournalEntryService(
   uuid: string,
   {
-    description,
     entry_date,
     amount,
     inventoryTypeUUID,
@@ -68,7 +67,7 @@ export async function updateJournalEntryService(
   await JournalEntryEntity.update(
     { uuid },
     {
-      ...(description && { description }),
+      description: `Asiento de Activos Fijos correspondiente al periodo ${new Date().getFullYear()} - ${new Date().getMonth() + 1}`,
       ...(entry_date && { entry_date }),
       ...(amount && { amount: parseFloat(amount) }),
       ...(foundInventoryType && { inventoryType: foundInventoryType }),

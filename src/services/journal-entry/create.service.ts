@@ -8,7 +8,6 @@ import { statusCode } from "../../utils/status.util";
 import { InventoryTypeEntity } from "./../../database/entities/entity/inventory-type.entity";
 
 export async function createJournalEntryService({
-  description,
   entry_date,
   amount,
   inventoryTypeUUID,
@@ -54,6 +53,8 @@ export async function createJournalEntryService({
       message: "Ledger account type must be general",
       status: statusCode.BAD_REQUEST,
     });
+
+  let description = `Asiento de Activos Fijos correspondiente al periodo ${new Date().getFullYear()} - ${new Date().getMonth() + 1}`;
 
   await JournalEntryEntity.create({
     description,
