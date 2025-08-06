@@ -42,6 +42,10 @@ export class CreateJournalEntryDTO {
 
 export class CreateAccountingDTO {
   @IsNotEmpty()
+  @IsUUID('4')
+  uuid: string;
+
+  @IsNotEmpty()
   @IsString()
   description: string;
 
