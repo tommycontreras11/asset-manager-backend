@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { getAllJournalEntryService } from "../../services/journal-entry/getAll.service";
 import { statusCode } from "../../utils/status.util";
-import { Between, LessThanOrEqual, MoreThanOrEqual } from "typeorm";
+import { Between, IsNull, LessThanOrEqual, MoreThanOrEqual } from "typeorm";
 
 export const getAllJournalEntryController = async (
   req: Request,
@@ -12,11 +12,20 @@ export const getAllJournalEntryController = async (
   let whereClause = {};
 
   if (from && to) {
-    whereClause = { entry_date: Between(new Date(from), new Date(to)) };
+    whereClause = {
+      entry_date: Between(normalizeDateStart(from), normalizeDateEnd(to)),
+      journal_id: IsNull(),
+    };
   } else if (from) {
-    whereClause = { entry_date: MoreThanOrEqual(new Date(from)) };
+    whereClause = {
+      entry_date: MoreThanOrEqual(normalizeDateStart(from)),
+      journal_id: IsNull(),
+    };
   } else if (to) {
-    whereClause = { entry_date: LessThanOrEqual(new Date(to)) };
+    whereClause = {
+      entry_date: LessThanOrEqual(normalizeDateEnd(to)),
+      journal_id: IsNull(),
+    };
   }
 
   getAllJournalEntryService({
@@ -51,4 +60,16 @@ export const getAllJournalEntryController = async (
         .status(e.status ?? statusCode.INTERNAL_SERVER_ERROR)
         .json({ error: { message: e.message } })
     );
+};
+
+const normalizeDateStart = (dateStr: string) => {
+  const date = new Date(dateStr);
+  date.setHours(0, 0, 0, 0);
+  return date;
+};
+
+const normalizeDateEnd = (dateStr: string) => {
+  const date = new Date(dateStr);
+  date.setHours(23, 59, 59, 999);
+  return date;
 };

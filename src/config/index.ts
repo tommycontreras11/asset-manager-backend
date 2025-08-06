@@ -1,4 +1,4 @@
 export const config = {
-    accountableSystemApi: process.env.ACCOUNTABLE_SYSTEM_API as string,
+    accountableSystemApiKey: process.env.ACCOUNTABLE_SYSTEM_API_KEY as string,
     accountableSystemUrl: process.env.ACCOUNTABLE_SYSTEM_URL as string,
 }
