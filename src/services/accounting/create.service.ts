@@ -86,8 +86,6 @@ const recursiveGetDataToSendToAccounting = async ({
     });
   }
 
-  console.log("accountableSystemUrl: ", config.accountableSystemUrl)
-
   await fetch(`${config.accountableSystemUrl}/public/entradas-contables`, {
     method: "POST",
     headers: {
