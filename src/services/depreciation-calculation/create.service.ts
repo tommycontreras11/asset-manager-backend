@@ -2,6 +2,7 @@ import { DepreciationCalculationEntity } from "../../database/entities/entity/de
 import { CreateDepreciationCalculationDTO } from "../../dto/depreciation-calculation.dto";
 import { statusCode } from "../../utils/status.util";
 import { FixedAssetEntity } from "./../../database/entities/entity/fixed-asset.entity";
+import { getFullDate } from "./../../utils/date.util";
 
 export async function createDepreciationCalculationService({
   process_date,
@@ -33,7 +34,7 @@ export async function createDepreciationCalculationService({
   });
 
   await DepreciationCalculationEntity.create({
-    process_date,
+    process_date: getFullDate(new Date(process_date)),
     depreciation_amount: depreciation.monthlyDepreciation,
     accumulated_depreciation: depreciation.accumulatedDepreciation,
     fixedAsset: foundFixedAsset,
