@@ -1,14 +1,19 @@
-import { AssetTypeEntity } from "./../../database/entities/entity/asset-type.entity";
-import { DepartmentEntity } from "./../../database/entities/entity/department.entity";
-import { EmployeeEntity } from "./../../database/entities/entity/employee.entity";
 import { FixedAssetEntity } from "../../database/entities/entity/fixed-asset.entity";
 import { CreateFixedAssetDTO } from "../../dto/fixed-asset.dto";
 import { statusCode } from "../../utils/status.util";
+import { AssetTypeEntity } from "./../../database/entities/entity/asset-type.entity";
+import { DepartmentEntity } from "./../../database/entities/entity/department.entity";
+import { EmployeeEntity } from "./../../database/entities/entity/employee.entity";
+import { getFullDate } from "./../../utils/date.util";
 
 export async function createFixedAssetService({
   name,
   purchase_value,
+  salvage_value,
+  useful_life,
   accumulated_depreciation,
+  purchase_date,
+  start_use_date,
   departmentUUID,
   assetTypeUUID,
   employeeUUID,
@@ -75,6 +80,10 @@ export async function createFixedAssetService({
   await FixedAssetEntity.create({
     name,
     purchase_value: parseFloat(purchase_value),
+    salvage_value: parseFloat(salvage_value),
+    useful_life: parseInt(useful_life),
+    purchase_date: getFullDate(new Date(purchase_date)),
+    start_use_date: getFullDate(new Date(start_use_date)),
     accumulated_depreciation: parseFloat(accumulated_depreciation),
     department: foundDepartment,
     assetType: foundAssetType,

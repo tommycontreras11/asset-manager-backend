@@ -5,16 +5,21 @@ import { AssetTypeEntity } from "./../../database/entities/entity/asset-type.ent
 import { DepartmentEntity } from "./../../database/entities/entity/department.entity";
 import { EmployeeEntity } from "./../../database/entities/entity/employee.entity";
 import { UpdateFixedAssetDTO } from "./../../dto/fixed-asset.dto";
+import { getFullDate } from "./../../utils/date.util";
 
 export async function updateFixedAssetService(
   uuid: string,
   {
     name,
     purchase_value,
+    salvage_value,
+    useful_life,
     accumulated_depreciation,
+    purchase_date,
+    start_use_date,
     departmentUUID,
     assetTypeUUID,
-    employeeUUID,
+    employeeUUID, 
     status,
   }: UpdateFixedAssetDTO
 ) {
@@ -118,8 +123,16 @@ export async function updateFixedAssetService(
     {
       ...(name && { name }),
       ...(purchase_value && { purchase_value: parseFloat(purchase_value) }),
+      ...(salvage_value && { salvage_value: parseFloat(salvage_value) }),
+      ...(useful_life && { useful_life: parseInt(useful_life) }),
       ...(accumulated_depreciation && {
         accumulated_depreciation: parseFloat(accumulated_depreciation),
+      }),
+      ...(purchase_date && {
+        purchase_date: getFullDate(new Date(purchase_date)),
+      }),
+      ...(start_use_date && {
+        start_use_date: getFullDate(new Date(start_use_date)),
       }),
       ...(foundDepartment && { department: foundDepartment }),
       ...(foundAssetType && { assetType: foundAssetType }),

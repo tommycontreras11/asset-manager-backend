@@ -26,9 +26,29 @@ export class CreateFixedAssetDTO {
   @IsNumberString()
   @Matches(/^\d{1,8}(\.\d{1,2})?$/, {
     message:
+      "Salvage value must have at most 10 digits in total and 2 decimal places",
+  })
+  salvage_value: string;
+
+  @IsNotEmpty()
+  @IsNumberString()
+  useful_life: string;
+
+  @IsNotEmpty()
+  @IsNumberString()
+  @Matches(/^\d{1,8}(\.\d{1,2})?$/, {
+    message:
       "Accumulated depreciation must have at most 10 digits in total and 2 decimal places",
   })
   accumulated_depreciation: string;
+
+  @IsNotEmpty()
+  @IsString()
+  purchase_date: string;
+
+  @IsNotEmpty()
+  @IsString()
+  start_use_date: string;
 
   @IsNotEmpty()
   @IsUUID("4")
@@ -60,9 +80,29 @@ export class UpdateFixedAssetDTO {
   @IsNumberString()
   @Matches(/^\d{1,8}(\.\d{1,2})?$/, {
     message:
+      "Salvage value must have at most 10 digits in total and 2 decimal places",
+  })
+  salvage_value: string;
+
+  @IsOptional()
+  @IsNumberString()
+  useful_life: string;
+
+  @IsOptional()
+  @IsNumberString()
+  @Matches(/^\d{1,8}(\.\d{1,2})?$/, {
+    message:
       "Accumulated depreciation must have at most 10 digits in total and 2 decimal places",
   })
   accumulated_depreciation: string;
+
+  @IsOptional()
+  @IsString()
+  purchase_date: string;
+
+  @IsOptional()
+  @IsString()
+  start_use_date: string;
 
   @IsOptional()
   @IsUUID("4")

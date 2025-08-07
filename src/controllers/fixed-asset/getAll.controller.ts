@@ -15,7 +15,11 @@ export const getAllFixedAssetController = async (_req: Request, res: Response) =
         uuid: fixedAsset.uuid,
         name: fixedAsset.name,
         purchase_value: fixedAsset.purchase_value,
+        salvage_value: fixedAsset.salvage_value,
+        useful_life: fixedAsset.useful_life,
         accumulated_depreciation: fixedAsset.accumulated_depreciation,
+        purchase_date: fixedAsset.purchase_date,
+        start_use_date: fixedAsset.start_use_date,
         assetType: {
           uuid: fixedAsset.assetType.uuid,
           name: fixedAsset.assetType.name,

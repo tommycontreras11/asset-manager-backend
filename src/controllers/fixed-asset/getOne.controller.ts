@@ -23,7 +23,11 @@ export const getOneFixedAssetController = async (
         uuid: data.uuid,
         name: data.name,
         purchase_value: data.purchase_value,
+        salvage_value: data.salvage_value,
+        useful_life: data.useful_life,
         accumulated_depreciation: data.accumulated_depreciation,
+        purchase_date: data.purchase_date,
+        start_use_date: data.start_use_date,
         assetType: {
           uuid: data.assetType.uuid,
           name: data.assetType.name,

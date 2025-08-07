@@ -14,8 +14,20 @@ export class FixedAssetEntity extends BaseEntity {
   @Column({ type: "decimal", precision: 10, scale: 2 })
   purchase_value: number;
 
+  @Column({ type: 'decimal', precision: 10, scale: 2, default: 0 })
+  salvage_value: number;
+
+  @Column({ type: 'int' })
+  useful_life: number; 
+
   @Column({ type: "decimal", precision: 10, scale: 2, default: 0 })
   accumulated_depreciation: number;
+
+  @Column({ type: 'date' })
+  purchase_date: Date;
+
+  @Column({ type: 'date' })
+  start_use_date: Date;
 
   @Column()
   department_id: number;
