@@ -15,22 +15,6 @@ export class CreateDepreciationCalculationDTO {
   process_date: string;
 
   @IsNotEmpty()
-  @IsNumberString()
-  @Matches(/^\d{1,8}(\.\d{1,2})?$/, {
-    message:
-      "Depreciation amount must have at most 10 digits in total and 2 decimal places",
-  })
-  depreciation_amount: string;
-
-  @IsNotEmpty()
-  @IsNumberString()
-  @Matches(/^\d{1,8}(\.\d{1,2})?$/, {
-    message:
-      "Accumulated depreciation amount must have at most 10 digits in total and 2 decimal places",
-  })
-  accumulated_depreciation: string;
-
-  @IsNotEmpty()
   @IsUUID("4")
   fixedAssetUUID: string;
 }
