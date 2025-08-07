@@ -39,6 +39,7 @@ export const getAllJournalEntryController = async (
       const journalEntries = data.map((journalEntry) => ({
         uuid: journalEntry.uuid,
         description: journalEntry.description,
+        journal_id: journalEntry.journal_id,
         inventoryType: {
           uuid: journalEntry.inventoryType.uuid,
           name: journalEntry.inventoryType.name,
